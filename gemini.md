@@ -54,13 +54,13 @@ Add the following to your `~/.gemini/settings.json` file:
 
 ## Core Components
 
-- **[server.py](file:///c:/Users/Z22431/OneDrive - The Coca-Cola Company/Documents/_Phani/Github Repos/MCP servers/et-google-analytics-mcp/analytics_mcp/server.py)**: The entry point of the application. It initializes the MCP server and registers tools.
-- **[coordinator.py](file:///c:/Users/Z22431/OneDrive - The Coca-Cola Company/Documents/_Phani/Github Repos/MCP servers/et-google-analytics-mcp/analytics_mcp/coordinator.py)**: Defines the singleton `FastMCP` instance used for tool registration.
-- **[tools/](file:///c:/Users/Z22431/OneDrive - The Coca-Cola Company/Documents/_Phani/Github Repos/MCP servers/et-google-analytics-mcp/analytics_mcp/tools/)**: Contains tool implementations categorized by API.
-  - **[admin/info.py](file:///c:/Users/Z22431/OneDrive - The Coca-Cola Company/Documents/_Phani/Github Repos/MCP servers/et-google-analytics-mcp/analytics_mcp/tools/admin/info.py)**: Tools for account and property management using the Admin API.
-  - **[reporting/core.py](file:///c:/Users/Z22431/OneDrive - The Coca-Cola Company/Documents/_Phani/Github Repos/MCP servers/et-google-analytics-mcp/analytics_mcp/tools/reporting/core.py)**: Tools for running standard reports using the Data API.
-  - **[reporting/realtime.py](file:///c:/Users/Z22431/OneDrive - The Coca-Cola Company/Documents/_Phani/Github Repos/MCP servers/et-google-analytics-mcp/analytics_mcp/tools/reporting/realtime.py)**: Tools for running realtime reports.
-  - **[utils.py](file:///c:/Users/Z22431/OneDrive - The Coca-Cola Company/Documents/_Phani/Github Repos/MCP servers/et-google-analytics-mcp/analytics_mcp/tools/utils.py)**: Shared utilities for client creation, resource name construction, and proto-to-dict conversion.
+- **`analytics_mcp/server.py`**: The entry point of the application. It initializes the MCP server and registers tools.
+- **`analytics_mcp/coordinator.py`**: Defines the singleton `FastMCP` instance used for tool registration.
+- **`analytics_mcp/tools/`**: Contains tool implementations categorized by API.
+  - **`admin/info.py`**: Tools for account and property management using the Admin API.
+  - **`reporting/core.py`**: Tools for running standard reports using the Data API.
+  - **`reporting/realtime.py`**: Tools for running realtime reports.
+  - **`utils.py`**: Shared utilities for client creation, resource name construction, and proto-to-dict conversion.
 
 ## Available Tools
 
@@ -75,6 +75,31 @@ Add the following to your `~/.gemini/settings.json` file:
 
 ### Metadata
 - `get_custom_dimensions_and_metrics`: Lists available custom fields for a specific property.
+
+## Development
+
+To test changes locally:
+
+1.  Clone the repository.
+2.  Install dependencies: `pip install -e .`
+3.  Modify your `~/.gemini/settings.json` to point to your local version:
+
+```json
+{
+  "mcpServers": {
+    "analytics-mcp": {
+      "command": "python",
+      "args": [
+        "path/to/repo/analytics_mcp/server.py"
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "path/to/credentials.json",
+        "GOOGLE_PROJECT_ID": "your-project-id"
+      }
+    }
+  }
+}
+```
 
 ## Usage Sample Prompts
 
