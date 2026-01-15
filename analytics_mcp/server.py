@@ -22,9 +22,7 @@ from analytics_mcp.coordinator import mcp
 # object, even though they are not directly used in this file.
 # The `# noqa: F401` comment tells the linter to ignore the "unused import"
 # warning.
-from analytics_mcp.tools.admin import info  # noqa: F401
-from analytics_mcp.tools.reporting import realtime  # noqa: F401
-from analytics_mcp.tools.reporting import core  # noqa: F401
+from analytics_mcp import impersonation_wrappers  # noqa: F401
 
 
 def run_server() -> None:
